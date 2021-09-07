@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <title>Home</title>
+</head>
+<body class="container">
+    <h1 class="my-3">Servicio SSR</h1>
+    <a 
+        href="/add"
+        class="btn btn-primary"
+    >Add</a>
+    <table class="table my-2">
+        <thead>
+            <th>Provincia</th>
+            <th>Habitantes con sintomas</th>
+            <th>Casos confirmados</th>
+            <th>Habitantes son COVID</th>
+            <th>Operacion</th>
+        </thead>
+        <tbody>
+            <% for(let i=0; i < data.length; i++) { %>
+                <tr>
+                    <td><%= data[i].provincia %></td>
+                    <td><%= data[i].casosConSintomas %></td>
+                    <td><%= data[i].casosConfirmados %></td>
+                    <td><%= data[i].casosSinCOVID %></td>
+                    <td>
+                        <a 
+                            class="btn btn-success mx-2"
+                            href="/edit/<%= data[i]._id %>"
+                        >Edit</a>
+                        <a 
+                            class="btn btn-danger"
+                            href="/delete/<%= data[i]._id %>"
+                        >Delete</a>
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>
